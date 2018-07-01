@@ -1,0 +1,22 @@
+# Site Settings
+title: "Listen"
+description: >
+    "Blank"
+baseurl: ""
+url: "https://CVSSP.github.io/listen"
+
+github:
+    username: "CVSSP"
+    repository : "listen"
+    branch: "gh-pages"
+
+# Build Setting
+include: 
+    - '_pages'
+exclude:
+  - package.json
+  - node_modules
+  - gulpfile.js
+
+kramdown:
+  input: GFM
