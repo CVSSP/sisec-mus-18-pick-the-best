@@ -3,11 +3,11 @@ title: "Listen"
 description: >
     "Blank"
 baseurl: ""
-url: "https://CVSSP.github.io/listen"
+url: "https://ryanckim.github.io/lva-ica-listen-pickthebest"
 
 github:
-    username: "CVSSP"
-    repository : "listen"
+    username: "ryanckim"
+    repository : "lva-ica-listen-pickthebest"
     branch: "gh-pages"
 
 # Build Setting
