@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ryanckim.github.io/lva-ica-listen-pickthebest/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ryanckim.github.io/lva-ica-listen-pickthebest/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ryanckim.github.io/lva-ica-listen-pickthebest/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://ryanckim.github.io/lva-ica-listen-pickthebest/images/favicon/manifest.json">
+    <link rel="mask-icon" href="https://ryanckim.github.io/lva-ica-listen-pickthebest/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Include the jQuery Mobile library-->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Listen -->
+    <link rel="stylesheet" href="https://ryanckim.github.io/lva-ica-listen-pickthebest/assets/css/listen.css">
+    <script src="https://ryanckim.github.io/lva-ica-listen-pickthebest/assets/js/listen.js"></script>
+
+</head> 
+
+
+<body>
+
+<div data-role='page' id='id-pickthebest'>
+
+
+
+
+
+
+<div data-role="header">
+
+<a 
+    class='ui-btn-left ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l back'>
+    Previous
+</a>
+
+<h1 class='title'>Pick The Best</h1>
+
+<a 
+    href="https://ryanckim.github.io/lva-ica-listen-pickthebest"
+    class='ui-btn-right ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r next'>
+    Next
+</a>
+
+</div>
+
+
+<div data-role="footer" data-id="footer" data-position="fixed">
+<button class="early-finish ui-btn-inline ui-mini" data-inline="true">Finish Early</button>
+</div>
+
+
+
+
+<!-- Popup window if all listener tries to move on before listening to all samples -->
+<div data-role="popup" class="listen-to-all-samples-popup" data-position-to="window" data-transition="turn">
+    <p>Please listen to all samples before moving on</p>
+</div>
+
+<div data-role="popup" class="submission-wait-popup" data-position-to="window" data-transition="turn">
+    <p>Please wait for this page to redirect...</p>
+</div>
+
+<!-- Popup window for submissions -->
+<div data-role='popup'
+     data-position-to='window'
+     class='ui-corner-all ui-popup ui-body-a ui-overlay-shadow submit-popup'
+     data-theme='b'
+     data-dismissible="false"
+     >
+
+<form method="post"
+      action="https://api.staticman.net/v2/entry/ryanckim/lva-ica-listen-pickthebest/gh-pages"
+      class='submit-form'
+      >
+
+<h2>Thank you, please submit your data:</h2>
+
+<input name="options[slug]" type="hidden" value='pickthebest'>
+<input name="options[redirect]" type="hidden" value='https://ryanckim.github.io/lva-ica-listen-pickthebest'>
+
+<input name='fields[experiment_id]'
+       value='pickthebest'
+       type='hidden'
+>
+
+<input name='fields[data]'
+       value=''
+       type='hidden'
+>
+
+<input type='submit'
+       value='Submit'
+       >
+
+<input type='button'
+       value='Cancel'
+       class='cancel'
+       >
+</form>
+</div>
+
+<!-- Main layout -->
+<div data-role="main" class="ui-content">
+<p>If this is the first screen you have seen, please <a href="https://ryanckim.github.io/lva-ica-listen-pickthebest/">restart the experiment
+now</a></p>
+
+<h1 id="task">Task</h1>
+
+<p>Using the buttons below, please compare all test sounds (1–6) with the
+reference sound, which corresponds to a recording of singing-voices.</p>
+
+<p>Your task is to pick the test sound that is <strong>most similar</strong> to the reference.</p>
+
+
+
+<div class='interface-container'>
+
+<div class="references-container" data-role="controlgroup"></div>
+
+<div class="button-container" data-role="ui-content"></div>
+
+<button class="stop-audio" data-inline="true">Stop Audio</button>
+
+</div>
+
+<!-- Popup windows-->
+<div data-role="popup" class="ties-warning-popup" data-position-to="window" data-transition="turn">
+    <p>Ties are not allowed, please check only one box</p>
+</div>
+
+<div data-role="popup" class=".no-selection-warning-popup" data-position-to="window" data-transition="turn">
+    <p>Please check one box before continuing</p>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+  /* This ID page wrapper is needed to get the correct javascript
+  triggered with cached pages. I can't come up with anything cleaner at the
+  moment */
+  $('#id-pickthebest').on('pageshow', function () {
+
+      if ('pickthebest' === 'soundboard')
+        window.listen.createSoundboard('{"continuous_playback":true,"loop_playback":true,"randomise_sounds_within_page":true,"randomise_pages":true,"must_play_all_samples_to_continue":false,"back_button_can_exit_test":true,"allow_submission":true,"allow_ties":true,"allow_early_finish":true,"pages":[{"name":"Set 1","references":[{"button_label":"Reference vocals","url":"sounds/Al James - Schoolboy Facination/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Al James - Schoolboy Facination/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Al James - Schoolboy Facination/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Al James - Schoolboy Facination/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Al James - Schoolboy Facination/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Al James - Schoolboy Facination/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Al James - Schoolboy Facination/UHL3_vocals.flac"}]},{"name":"Set 2","references":[{"button_label":"Reference vocals","url":"sounds/Angels In Amplifiers - I_m Alright/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Angels In Amplifiers - I_m Alright/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Angels In Amplifiers - I_m Alright/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Angels In Amplifiers - I_m Alright/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Angels In Amplifiers - I_m Alright/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Angels In Amplifiers - I_m Alright/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Angels In Amplifiers - I_m Alright/UHL3_vocals.flac"}]},{"name":"Set 3","references":[{"button_label":"Reference vocals","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/UHL3_vocals.flac"}]},{"name":"Set 4","references":[{"button_label":"Reference vocals","url":"sounds/Buitraker - Revo X/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Buitraker - Revo X/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Buitraker - Revo X/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Buitraker - Revo X/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Buitraker - Revo X/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Buitraker - Revo X/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Buitraker - Revo X/UHL3_vocals.flac"}]},{"name":"Set 5","references":[{"button_label":"Reference vocals","url":"sounds/Enda Reilly - Cur An Long Ag Seol/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Enda Reilly - Cur An Long Ag Seol/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Enda Reilly - Cur An Long Ag Seol/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Enda Reilly - Cur An Long Ag Seol/UHL3_vocals.flac"}]},{"name":"Set 6","references":[{"button_label":"Reference vocals","url":"sounds/Georgia Wonder - Siren/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Georgia Wonder - Siren/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Georgia Wonder - Siren/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Georgia Wonder - Siren/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Georgia Wonder - Siren/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Georgia Wonder - Siren/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Georgia Wonder - Siren/UHL3_vocals.flac"}]},{"name":"Set 7","references":[{"button_label":"Reference vocals","url":"sounds/Hollow Ground - Ill Fate/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Hollow Ground - Ill Fate/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Hollow Ground - Ill Fate/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Hollow Ground - Ill Fate/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Hollow Ground - Ill Fate/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Hollow Ground - Ill Fate/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Hollow Ground - Ill Fate/UHL3_vocals.flac"}]},{"name":"Set 8","references":[{"button_label":"Reference vocals","url":"sounds/James Elder_Mark M Thompson - The English Actor/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/James Elder_Mark M Thompson - The English Actor/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/James Elder_Mark M Thompson - The English Actor/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/James Elder_Mark M Thompson - The English Actor/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/James Elder_Mark M Thompson - The English Actor/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/James Elder_Mark M Thompson - The English Actor/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/James Elder_Mark M Thompson - The English Actor/UHL3_vocals.flac"}]},{"name":"Set 9","references":[{"button_label":"Reference vocals","url":"sounds/Juliet_s Rescue - Heartbeats/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Juliet_s Rescue - Heartbeats/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Juliet_s Rescue - Heartbeats/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Juliet_s Rescue - Heartbeats/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Juliet_s Rescue - Heartbeats/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Juliet_s Rescue - Heartbeats/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Juliet_s Rescue - Heartbeats/UHL3_vocals.flac"}]},{"name":"Set 10","references":[{"button_label":"Reference vocals","url":"sounds/Raft Monk - Tiring/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Raft Monk - Tiring/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Raft Monk - Tiring/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Raft Monk - Tiring/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Raft Monk - Tiring/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Raft Monk - Tiring/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Raft Monk - Tiring/UHL3_vocals.flac"}]},{"name":"Set 11","references":[{"button_label":"Reference vocals","url":"sounds/Signe Jakobsen - What Have You Done To Me/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Signe Jakobsen - What Have You Done To Me/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Signe Jakobsen - What Have You Done To Me/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Signe Jakobsen - What Have You Done To Me/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Signe Jakobsen - What Have You Done To Me/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Signe Jakobsen - What Have You Done To Me/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Signe Jakobsen - What Have You Done To Me/UHL3_vocals.flac"}]},{"name":"Set 12","references":[{"button_label":"Reference vocals","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/UHL3_vocals.flac"}]},{"name":"Set 13","references":[{"button_label":"Reference vocals","url":"sounds/Tom McKenzie - Directions/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Tom McKenzie - Directions/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Tom McKenzie - Directions/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Tom McKenzie - Directions/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Tom McKenzie - Directions/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Tom McKenzie - Directions/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Tom McKenzie - Directions/UHL3_vocals.flac"}]}]}', 'https://ryanckim.github.io/lva-ica-listen-pickthebest')
+      else if ('pickthebest' === 'mushra')
+        window.listen.createMUSHRA('{"continuous_playback":true,"loop_playback":true,"randomise_sounds_within_page":true,"randomise_pages":true,"must_play_all_samples_to_continue":false,"back_button_can_exit_test":true,"allow_submission":true,"allow_ties":true,"allow_early_finish":true,"pages":[{"name":"Set 1","references":[{"button_label":"Reference vocals","url":"sounds/Al James - Schoolboy Facination/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Al James - Schoolboy Facination/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Al James - Schoolboy Facination/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Al James - Schoolboy Facination/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Al James - Schoolboy Facination/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Al James - Schoolboy Facination/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Al James - Schoolboy Facination/UHL3_vocals.flac"}]},{"name":"Set 2","references":[{"button_label":"Reference vocals","url":"sounds/Angels In Amplifiers - I_m Alright/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Angels In Amplifiers - I_m Alright/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Angels In Amplifiers - I_m Alright/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Angels In Amplifiers - I_m Alright/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Angels In Amplifiers - I_m Alright/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Angels In Amplifiers - I_m Alright/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Angels In Amplifiers - I_m Alright/UHL3_vocals.flac"}]},{"name":"Set 3","references":[{"button_label":"Reference vocals","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/UHL3_vocals.flac"}]},{"name":"Set 4","references":[{"button_label":"Reference vocals","url":"sounds/Buitraker - Revo X/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Buitraker - Revo X/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Buitraker - Revo X/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Buitraker - Revo X/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Buitraker - Revo X/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Buitraker - Revo X/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Buitraker - Revo X/UHL3_vocals.flac"}]},{"name":"Set 5","references":[{"button_label":"Reference vocals","url":"sounds/Enda Reilly - Cur An Long Ag Seol/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Enda Reilly - Cur An Long Ag Seol/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Enda Reilly - Cur An Long Ag Seol/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Enda Reilly - Cur An Long Ag Seol/UHL3_vocals.flac"}]},{"name":"Set 6","references":[{"button_label":"Reference vocals","url":"sounds/Georgia Wonder - Siren/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Georgia Wonder - Siren/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Georgia Wonder - Siren/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Georgia Wonder - Siren/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Georgia Wonder - Siren/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Georgia Wonder - Siren/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Georgia Wonder - Siren/UHL3_vocals.flac"}]},{"name":"Set 7","references":[{"button_label":"Reference vocals","url":"sounds/Hollow Ground - Ill Fate/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Hollow Ground - Ill Fate/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Hollow Ground - Ill Fate/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Hollow Ground - Ill Fate/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Hollow Ground - Ill Fate/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Hollow Ground - Ill Fate/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Hollow Ground - Ill Fate/UHL3_vocals.flac"}]},{"name":"Set 8","references":[{"button_label":"Reference vocals","url":"sounds/James Elder_Mark M Thompson - The English Actor/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/James Elder_Mark M Thompson - The English Actor/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/James Elder_Mark M Thompson - The English Actor/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/James Elder_Mark M Thompson - The English Actor/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/James Elder_Mark M Thompson - The English Actor/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/James Elder_Mark M Thompson - The English Actor/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/James Elder_Mark M Thompson - The English Actor/UHL3_vocals.flac"}]},{"name":"Set 9","references":[{"button_label":"Reference vocals","url":"sounds/Juliet_s Rescue - Heartbeats/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Juliet_s Rescue - Heartbeats/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Juliet_s Rescue - Heartbeats/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Juliet_s Rescue - Heartbeats/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Juliet_s Rescue - Heartbeats/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Juliet_s Rescue - Heartbeats/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Juliet_s Rescue - Heartbeats/UHL3_vocals.flac"}]},{"name":"Set 10","references":[{"button_label":"Reference vocals","url":"sounds/Raft Monk - Tiring/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Raft Monk - Tiring/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Raft Monk - Tiring/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Raft Monk - Tiring/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Raft Monk - Tiring/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Raft Monk - Tiring/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Raft Monk - Tiring/UHL3_vocals.flac"}]},{"name":"Set 11","references":[{"button_label":"Reference vocals","url":"sounds/Signe Jakobsen - What Have You Done To Me/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Signe Jakobsen - What Have You Done To Me/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Signe Jakobsen - What Have You Done To Me/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Signe Jakobsen - What Have You Done To Me/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Signe Jakobsen - What Have You Done To Me/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Signe Jakobsen - What Have You Done To Me/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Signe Jakobsen - What Have You Done To Me/UHL3_vocals.flac"}]},{"name":"Set 12","references":[{"button_label":"Reference vocals","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/UHL3_vocals.flac"}]},{"name":"Set 13","references":[{"button_label":"Reference vocals","url":"sounds/Tom McKenzie - Directions/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Tom McKenzie - Directions/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Tom McKenzie - Directions/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Tom McKenzie - Directions/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Tom McKenzie - Directions/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Tom McKenzie - Directions/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Tom McKenzie - Directions/UHL3_vocals.flac"}]}]}', 'https://ryanckim.github.io/lva-ica-listen-pickthebest')
+      else if ('pickthebest' === 'pickthebest')
+        window.listen.createPickTheBest('{"continuous_playback":true,"loop_playback":true,"randomise_sounds_within_page":true,"randomise_pages":true,"must_play_all_samples_to_continue":false,"back_button_can_exit_test":true,"allow_submission":true,"allow_ties":true,"allow_early_finish":true,"pages":[{"name":"Set 1","references":[{"button_label":"Reference vocals","url":"sounds/Al James - Schoolboy Facination/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Al James - Schoolboy Facination/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Al James - Schoolboy Facination/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Al James - Schoolboy Facination/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Al James - Schoolboy Facination/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Al James - Schoolboy Facination/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Al James - Schoolboy Facination/UHL3_vocals.flac"}]},{"name":"Set 2","references":[{"button_label":"Reference vocals","url":"sounds/Angels In Amplifiers - I_m Alright/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Angels In Amplifiers - I_m Alright/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Angels In Amplifiers - I_m Alright/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Angels In Amplifiers - I_m Alright/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Angels In Amplifiers - I_m Alright/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Angels In Amplifiers - I_m Alright/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Angels In Amplifiers - I_m Alright/UHL3_vocals.flac"}]},{"name":"Set 3","references":[{"button_label":"Reference vocals","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Ben Carrigan - We_ll Talk About It All Tonight/UHL3_vocals.flac"}]},{"name":"Set 4","references":[{"button_label":"Reference vocals","url":"sounds/Buitraker - Revo X/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Buitraker - Revo X/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Buitraker - Revo X/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Buitraker - Revo X/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Buitraker - Revo X/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Buitraker - Revo X/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Buitraker - Revo X/UHL3_vocals.flac"}]},{"name":"Set 5","references":[{"button_label":"Reference vocals","url":"sounds/Enda Reilly - Cur An Long Ag Seol/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Enda Reilly - Cur An Long Ag Seol/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Enda Reilly - Cur An Long Ag Seol/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Enda Reilly - Cur An Long Ag Seol/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Enda Reilly - Cur An Long Ag Seol/UHL3_vocals.flac"}]},{"name":"Set 6","references":[{"button_label":"Reference vocals","url":"sounds/Georgia Wonder - Siren/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Georgia Wonder - Siren/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Georgia Wonder - Siren/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Georgia Wonder - Siren/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Georgia Wonder - Siren/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Georgia Wonder - Siren/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Georgia Wonder - Siren/UHL3_vocals.flac"}]},{"name":"Set 7","references":[{"button_label":"Reference vocals","url":"sounds/Hollow Ground - Ill Fate/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Hollow Ground - Ill Fate/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Hollow Ground - Ill Fate/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Hollow Ground - Ill Fate/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Hollow Ground - Ill Fate/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Hollow Ground - Ill Fate/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Hollow Ground - Ill Fate/UHL3_vocals.flac"}]},{"name":"Set 8","references":[{"button_label":"Reference vocals","url":"sounds/James Elder_Mark M Thompson - The English Actor/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/James Elder_Mark M Thompson - The English Actor/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/James Elder_Mark M Thompson - The English Actor/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/James Elder_Mark M Thompson - The English Actor/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/James Elder_Mark M Thompson - The English Actor/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/James Elder_Mark M Thompson - The English Actor/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/James Elder_Mark M Thompson - The English Actor/UHL3_vocals.flac"}]},{"name":"Set 9","references":[{"button_label":"Reference vocals","url":"sounds/Juliet_s Rescue - Heartbeats/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Juliet_s Rescue - Heartbeats/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Juliet_s Rescue - Heartbeats/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Juliet_s Rescue - Heartbeats/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Juliet_s Rescue - Heartbeats/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Juliet_s Rescue - Heartbeats/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Juliet_s Rescue - Heartbeats/UHL3_vocals.flac"}]},{"name":"Set 10","references":[{"button_label":"Reference vocals","url":"sounds/Raft Monk - Tiring/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Raft Monk - Tiring/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Raft Monk - Tiring/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Raft Monk - Tiring/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Raft Monk - Tiring/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Raft Monk - Tiring/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Raft Monk - Tiring/UHL3_vocals.flac"}]},{"name":"Set 11","references":[{"button_label":"Reference vocals","url":"sounds/Signe Jakobsen - What Have You Done To Me/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Signe Jakobsen - What Have You Done To Me/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Signe Jakobsen - What Have You Done To Me/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Signe Jakobsen - What Have You Done To Me/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Signe Jakobsen - What Have You Done To Me/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Signe Jakobsen - What Have You Done To Me/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Signe Jakobsen - What Have You Done To Me/UHL3_vocals.flac"}]},{"name":"Set 12","references":[{"button_label":"Reference vocals","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/The Sunshine Garcia Band - For I Am The Moon/UHL3_vocals.flac"}]},{"name":"Set 13","references":[{"button_label":"Reference vocals","url":"sounds/Tom McKenzie - Directions/ref_vocals.flac"}],"sounds":[{"name":"JY3","url":"sounds/Tom McKenzie - Directions/JY3_vocals.flac"},{"name":"MDL1","url":"sounds/Tom McKenzie - Directions/MDL1_vocals.flac"},{"name":"STL1","url":"sounds/Tom McKenzie - Directions/STL1_vocals.flac"},{"name":"TAK2","url":"sounds/Tom McKenzie - Directions/TAK2_vocals.flac"},{"name":"TAU1","url":"sounds/Tom McKenzie - Directions/TAU1_vocals.flac"},{"name":"UHL3","url":"sounds/Tom McKenzie - Directions/UHL3_vocals.flac"}]}]}', 'https://ryanckim.github.io/lva-ica-listen-pickthebest')
+  })
+</script>
+
+</div>
+</body>
+</html>
