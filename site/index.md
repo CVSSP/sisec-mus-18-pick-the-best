@@ -16,7 +16,7 @@ perceptually identical to the original recording.
 Examples of things that might influence your decision:
 
 - Portions of the original recording missing
-- Artifacts, such a noise
+- Artefacts, such as noise
 - Changes to the timbre of the singing-voice
 - The presence of other instruments that are not absent in the reference
 
