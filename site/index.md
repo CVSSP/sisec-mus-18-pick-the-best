@@ -18,7 +18,7 @@ Examples of things that might influence your decision:
 - Portions of the original recording missing
 - Artefacts, such as noise
 - Changes to the timbre of the singing-voice
-- The presence of other instruments that are not absent in the reference
+- The presence of other instruments that are absent in the reference, e.g. guitars, drums
 
 There are 13 pages to complete, but you may finish early by clicking the button
 at the bottom of the page.
