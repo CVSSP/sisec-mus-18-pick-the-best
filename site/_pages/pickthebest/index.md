@@ -5,8 +5,7 @@ permalink: /pickthebest/
 title: Pick The Best
 ---
 
-If this is the first screen you have seen, please [restart the experiment
-now]({{site.url}}/)
+If this is the first screen you have seen (there is an intro page), please [click here to start a new experiment in a new tab]({{site.url}}/){:target="_blank"} and close all other tabs.
 
 # Task
 
