@@ -3,10 +3,10 @@ title: "Listen"
 description: >
     "Blank"
 baseurl: ""
-url: "https://ryanckim.github.io/lva-ica-listen-pickthebest"
+url: "https://deeuu.github.io/lva-ica-listen-pickthebest"
 
 github:
-    username: "ryanckim"
+    username: "deeuu"
     repository : "lva-ica-listen-pickthebest"
     branch: "gh-pages"
 
