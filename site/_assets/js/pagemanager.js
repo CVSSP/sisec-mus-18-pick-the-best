@@ -79,7 +79,6 @@ PageManager.prototype.configureButtons = function () {
     if (this.loader) { this.loader.stop(true) }
     this.fillConfig()
     this.complete()
-    $.mobile.changePage(this.next_url)
   }.bind(this))
 }
 
