@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pylisten = {editable = true, git = "https://github.com/deeuu/pylisten"}
+pandas = "*"
 
 [dev-packages]
 
