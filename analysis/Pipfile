@@ -5,8 +5,11 @@ name = "pypi"
 
 [packages]
 pylisten = {editable = true, git = "https://github.com/deeuu/pylisten"}
+untwist = {editable = true, ref = "dev", git = "https://github.com/IoSR-Surrey/untwist"}
 pandas = "*"
 seaborn = "*"
+mir-eval = "*"
+cython = "*"
 
 [dev-packages]
 
