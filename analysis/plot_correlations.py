@@ -1,3 +1,4 @@
+import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import spearmanr
@@ -15,7 +16,9 @@ frame = pd.read_csv('../results/dataset.csv')
 frame['song'] = frame['url'].apply(lambda x: x.split('/')[1])
 
 # limit the anlaysis to only those listeners who did the entire test
-num_songs = len(pd.unique(frame['song']))
+songs = pd.unique(frame['song'].sort_values())
+
+num_songs = len(songs)
 
 completed_n_songs = frame.groupby(['submission_id'])['value'].sum()
 
@@ -108,10 +111,13 @@ handles = [handles[0], handles[-1]]
 labels = [labels[0], labels[-1]]
 ax.legend(handles, labels, loc='lower left')
 
+songs = [_.replace('_', '\'') for _ in songs]
+songs[7] = songs[7].replace('\'', ' & ')
 ax.set_xlabel('')
 ax.set_ylabel('Spearman correlation')
+ax.set_xticklabels(songs)
 plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
-plt.xticks(rotation=55, fontsize=4)
+plt.xticks(rotation=60, fontsize=5)
 plt.tight_layout()
 plt.savefig('../results/correlations.pdf')
 plt.show()
