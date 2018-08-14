@@ -24,6 +24,7 @@ def peass(reference_files,
 def main(toolbox_path):
 
     stimuli_path = '../site/sounds'
+    songs = os.listdir(stimuli_path)
 
     refs = ['ref_vocals.flac',
             'ref_accompaniment.flac',
@@ -34,16 +35,16 @@ def main(toolbox_path):
     num_songs = 13
     num_algos = len(algos)
 
-    frame = pd.DataFrame(columns=['Song', 'Algo', 'SDR'],
+    frame = pd.DataFrame(columns=['Song', 'Algo', 'OPS'],
                          index=np.arange(num_songs * num_algos))
 
     idx = 0
-    for song in os.listdir(stimuli_path):
+    for song in songs:
 
         song_path = os.path.join(stimuli_path, song)
 
         ref_paths = [os.path.join(song_path, _) for _ in refs]
-        
+
         for algo in algos:
 
             algo_path = os.path.join(song_path, f'{algo}_vocals.flac')
@@ -57,5 +58,5 @@ def main(toolbox_path):
     frame.to_csv('../results/ops.csv', index=None)
 
 main(
-    '/vol/vssp/maruss/matlab_toolboxes/PEASS-Software-v2.0_audioread_compiled'
+    '/home/dominic/git/peass-software'
 )

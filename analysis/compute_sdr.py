@@ -45,6 +45,6 @@ def main():
 
             idx += 1
 
-    frame.to_csv('../results/sdr.csv', index=None)
+    frame.to_csv('../results/sdr_gain.csv', index=None)
 
 main()
