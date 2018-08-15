@@ -6,9 +6,9 @@ import pandas as pd
 import matplotlib as mpl
 
 plt.rc('text', usetex=False)
-plt.rc('font', family='Times New Roman', size='6')
-plt.rcParams['xtick.labelsize'] = 6
-plt.rcParams['axes.labelsize'] = 6
+plt.rc('font', family='Times New Roman', size='5')
+plt.rcParams['xtick.labelsize'] = 4
+plt.rcParams['axes.labelsize'] = 5
 
 frame = pd.read_csv('../results/dataset.csv')
 
@@ -87,10 +87,10 @@ print(data[data.song == 'Tom McKenzie - Directions'])
 The plot
 '''
 
-fig, ax = plt.subplots(figsize=(3.3, 3.0))
+fig, ax = plt.subplots(figsize=(3.3, 2.5))
 
 colors = sns.color_palette("PuOr", 10)
-plot = sns.stripplot(x='song', y='rho',
+plot = sns.stripplot(y='song', x='rho',
                      marker='s',
                      alpha=0.8,
                      color=colors[2],
@@ -98,7 +98,7 @@ plot = sns.stripplot(x='song', y='rho',
                      label='OPS',
                      ax=ax)
 
-plot = sns.stripplot(x='song', y='rho',
+plot = sns.stripplot(y='song', x='rho',
                      marker='o',
                      alpha=0.8,
                      color=colors[6],
@@ -113,11 +113,11 @@ ax.legend(handles, labels, loc='lower left')
 
 songs = [_.replace('_', '\'') for _ in songs]
 songs[7] = songs[7].replace('\'', ' & ')
-ax.set_xlabel('')
-ax.set_ylabel('Spearman correlation')
-ax.set_xticklabels(songs)
-plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
-plt.xticks(rotation=60, fontsize=5)
-plt.tight_layout()
+ax.set_ylabel('')
+ax.set_xlabel('Spearman correlation')
+ax.set_yticklabels(songs)
+plt.setp(ax.yaxis.get_majorticklabels(), ha='right')
+plt.yticks(rotation=0, fontsize=4)
+plt.tight_layout(pad=0.25)
 plt.savefig('../results/correlations.pdf')
 plt.show()
