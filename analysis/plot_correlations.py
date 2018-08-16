@@ -6,9 +6,9 @@ import pandas as pd
 import matplotlib as mpl
 
 plt.rc('text', usetex=False)
-plt.rc('font', family='Times New Roman', size='5')
-plt.rcParams['xtick.labelsize'] = 4
-plt.rcParams['axes.labelsize'] = 5
+plt.rc('font', family='Times New Roman', size='6')
+plt.rcParams['xtick.labelsize'] = 5
+plt.rcParams['axes.labelsize'] = 6
 
 frame = pd.read_csv('../results/dataset.csv')
 
@@ -109,7 +109,7 @@ plot = sns.stripplot(y='song', x='rho',
 handles, labels = ax.get_legend_handles_labels()
 handles = [handles[0], handles[-1]]
 labels = [labels[0], labels[-1]]
-ax.legend(handles, labels, loc='lower left')
+ax.legend(handles, labels, loc='upper left')
 
 songs = [_.replace('_', '\'') for _ in songs]
 songs[7] = songs[7].replace('\'', ' & ')
