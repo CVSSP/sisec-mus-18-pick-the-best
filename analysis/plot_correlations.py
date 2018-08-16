@@ -69,7 +69,9 @@ ops_max_matches = sum(
     )
 )
 
-print(f'SDR matches subjsec max in {sdr_max_matches} cases')
+print(subject_max.query("metric == 'SDR'"))
+
+print(f'SDR matches subject max in {sdr_max_matches} cases')
 print(f'OPS matches subject max in {ops_max_matches} cases')
 
 '''
@@ -83,9 +85,7 @@ corrs = data.groupby(['song', 'metric']).apply(
 # OPS didn't agree with subjects on this one:
 print(data[data.song == 'Tom McKenzie - Directions'])
 
-'''
 The plot
-'''
 
 fig, ax = plt.subplots(figsize=(3.3, 2.5))
 
