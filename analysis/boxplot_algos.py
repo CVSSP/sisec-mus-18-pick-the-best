@@ -1,42 +1,71 @@
+import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import pandas as pd
+from matplotlib import rcParams
+rcParams['text.usetex'] = True
 
-sns.set_palette("colorblind")
+def plot(path):
 
-frame = pd.read_csv('../results/dataset.csv')
+    frame = pd.read_csv('../results/dataset.csv')
 
-counts = frame.groupby(['sound', 'page'])['value'].sum()
-num_people = frame.groupby(['sound', 'page'])['submission_id'].nunique()
+    frame['song'] = frame['url'].apply(lambda x: x.split('/')[1])
 
-normalised_counts = (counts / num_people).reset_index(name='normalised_count')
+    # limit the anlaysis to only those listeners who did the entire test
 
-medians = (
-    normalised_counts.groupby('sound')
-    .median().reset_index()
-    .sort_values(by='normalised_count')
-)
+    completed_n_songs = frame.groupby(['submission_id'])['value'].sum()
 
-fig, ax = plt.subplots(figsize=(6, 4))
+    frame = frame[
+        frame.submission_id.isin(
+            completed_n_songs[(completed_n_songs >= 13)].index
+        )
+    ]
 
-sns.boxplot(x='sound', y='normalised_count',
-           order=medians.sound,
-           data=normalised_counts,
-           fliersize=0,
-           ax=ax)
+    counts = frame.groupby(['sound', 'page'])['value'].sum()
+    num_people = frame.groupby(['sound', 'page'])['submission_id'].nunique()
 
-sns.swarmplot(x='sound', y='normalised_count',
-             order=medians.sound,
-             data=normalised_counts,
-             color='0.3',
-             size=8,
-             ax=ax)
+    normalised_counts = (
+        (counts / num_people)
+        .reset_index(name='normalised_count')
+    )
 
-sns.despine(offset=5, trim=True)
+    medians = (
+        normalised_counts.groupby('sound')
+        .median().reset_index()
+        .sort_values(by='normalised_count')
+    )
 
-ax.set_ylabel('Normalised count')
-ax.set_xlabel('Algorithm')
+    # The plot
 
-plt.tight_layout()
-plt.savefig('../results/algo_boxplots.pdf')
-plt.show()
+    sns.set_palette("colorblind")
+
+    fig, ax = plt.subplots(figsize=(6, 3))
+
+    sns.boxplot(x='sound', y='normalised_count',
+               order=medians.sound,
+               data=normalised_counts,
+               fliersize=0,
+               ax=ax)
+
+    sns.swarmplot(x='sound', y='normalised_count',
+                 order=medians.sound,
+                 data=normalised_counts,
+                 color='0.3',
+                 size=8,
+                 ax=ax)
+
+    ax.set_ylim(0, 0.65)
+
+    sns.despine(offset=5, trim=True)
+
+    ax.set_ylabel('Proportion of times selected')
+    ax.set_xlabel('Source Separation Algorithm')
+
+
+    plt.tight_layout(pad=0)
+    plt.savefig(path, dpi=300)
+    plt.show()
+
+
+if __name__ == '__main__':
+
+    plot('../results/algo_boxplots.png')
