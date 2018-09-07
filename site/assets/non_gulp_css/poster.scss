@@ -5,14 +5,22 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
 
-body {
+@media print {
+  @page {
+    size: A0 portrait;
+    margin-left: 0cm;
+    margin-right: 0cm;
+    margin-top: 0cm;
+    margin-bottom: 0cm;
+  }
 }
+ 
 
 #wrapper{
 
     @media not print {
-        height: 14in;
-        width: 10in;
+        height: 13.95in;
+        width: 9.75in;
     }
 
     margin: 0 auto;
@@ -23,22 +31,20 @@ body {
 
 #content{
 
-    width: 33in;
-    height: 46in;
-    max-width: 33in;
-    max-height: 46in;
+    width: 32.5in;
+    height: 46.5in;
+    max-width: 32.5in;
+    max-height: 46.5in;
     overflow: hidden;
     -moz-overflow: hidden;
     margin-left: auto;
     margin-right: auto;
 
-    @media print {
-        transform: scale(1);
-        transform-origin: 0 0;
+    @media not print {
+      transform: scale(0.3);
+      transform-origin: 0 0;
     }
 
-    transform: scale(0.3);
-    transform-origin: 0 0;
 
     display: grid;
     grid-gap: 20px;
@@ -46,9 +52,13 @@ body {
 
     grid-template-areas:
     'title title title title title title-info title-info'
-    'intro intro intro2 intro2 results results results'
-    'intro intro method method results results results'
-    'intro intro method method conclusions conclusions conclusions';
+    'intro intro intro method2 method2 method2 method2'
+    'intro intro intro method2 method2 method2 method2'
+    'intro2 intro2 intro2 results results results results'
+    'intro2 intro2 intro2 results results results results'
+    'method1 method1 method1 results results results results'
+    'method1 method1 method1 results results results results'
+    'method1 method1 method1 conclusions conclusions conclusions conclusions';
 
     grid-template-columns: repeat(7, 1fr);
 
@@ -106,8 +116,12 @@ h1, h2, h3, h4
     grid-area: intro2;
 }
 
-#method {
-    grid-area: method;
+#method1 {
+    grid-area: method1;
+}
+
+#method2 {
+    grid-area: method2;
 }
 
 #results {
@@ -182,7 +196,7 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    font-size: 30pt;
+    font-size: 24pt;
     color: #818f91 !important;
     padding: 0.5rem;
 
@@ -239,13 +253,13 @@ a, u {
 img {
     max-width: 95%;
     display: block;
-    margin: auto;
+    margin: 0 auto 0 auto;
     margin-top: 1em;
     margin-bottom: 0em;
 }
 img + em {
     display: block;
     text-align: center;
-    margin-bottom: 1em;
-    font-size: 30pt;
+    margin-bottom: 0.5em;
+    font-size: 28pt;
 }
