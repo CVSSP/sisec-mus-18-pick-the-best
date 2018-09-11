@@ -3,11 +3,11 @@ title: "Listen"
 description: >
     "Blank"
 baseurl: ""
-url: "https://deeuu.github.io/lva-ica-listen-pickthebest"
+url: "https://github.com/CVSSP/sisec-mus-18-pick-the-best"
 
 github:
-    username: "deeuu"
-    repository : "lva-ica-listen-pickthebest"
+    username: "CVSPP"
+    repository : "sisec-mus-18-pick-the-best"
     branch: "gh-pages"
 
 # Build Setting
