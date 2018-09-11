@@ -2,13 +2,15 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
+import numpy as np
+
+np.random.seed(0)
 rcParams['text.usetex'] = True
+rcParams['lines.linewidth'] = 0.2
 
 def plot(path):
 
     frame = pd.read_csv('../results/dataset.csv')
-
-    frame['song'] = frame['url'].apply(lambda x: x.split('/')[1])
 
     # limit the anlaysis to only those listeners who did the entire test
 
@@ -36,30 +38,36 @@ def plot(path):
 
     # The plot
 
-    sns.set_palette("colorblind")
+    sns.set_palette("pastel", 13)
 
     fig, ax = plt.subplots(figsize=(6, 3))
 
     sns.boxplot(x='sound', y='normalised_count',
-               order=medians.sound,
-               data=normalised_counts,
-               fliersize=0,
-               ax=ax)
+                order=medians.sound,
+                data=normalised_counts,
+                fliersize=0,
+                color='white',
+                ax=ax)
 
-    sns.swarmplot(x='sound', y='normalised_count',
-                 order=medians.sound,
-                 data=normalised_counts,
-                 color='0.3',
-                 size=8,
-                 ax=ax)
+    plt.setp(ax.artists, edgecolor = 'k', facecolor='w')
+    # plt.setp(ax.lines, color='k')
 
-    ax.set_ylim(0, 0.65)
+    sns.pointplot(x='sound', y='normalised_count',
+                  order=medians.sound,
+                  data=normalised_counts,
+                  dodge=0.1,
+                  hue='page',
+                  linestyles='--',
+                  ax=ax)
+
+    ax.set_ylim(-0.05, 0.65)
+    ax.legend_.remove()
+    plt.setp(ax.collections, sizes=[80], alpha=0.8)
 
     sns.despine(offset=5, trim=True)
 
     ax.set_ylabel('Proportion of times selected')
     ax.set_xlabel('Source Separation Algorithm')
-
 
     plt.tight_layout(pad=0)
     plt.savefig(path, dpi=300)

@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib as mpl
 
 
-def plot(paper=True):
+def make_plot(paper=True):
 
     plt.rc('text', usetex=False)
 
@@ -148,4 +148,4 @@ def plot(paper=True):
 
 if __name__ == '__main__':
 
-    plot(False)
+    make_plot(False)
