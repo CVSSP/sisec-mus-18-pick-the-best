@@ -1,0 +1,90 @@
+continuous_playback: true
+loop_playback: true
+allow_submission: true
+
+rows:
+
+    - name: 'The Sunshine Garcia Band - For I Am The Moon'
+      sounds:
+          - button_label: 'MDL1'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/MDL1_vocals.flac
+          - button_label: 'STL1'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/STL1_vocals.flac
+          - button_label: '<b style=color:red>JY3</b>'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/JY3_vocals.flac
+          - button_label: 'UHL3'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/UHL3_vocals.flac
+          - button_label: 'TAK2'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/TAK2_vocals.flac
+          - button_label: 'TAU1'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/TAU1_vocals.flac
+          - button_label: 'Reference vocals'
+            url: sounds/The Sunshine Garcia Band - For I Am The Moon/ref_vocals.flac
+
+    - name: 'James Elder_Mark M Thompson - The English Actor'
+      sounds:
+          - button_label: 'MDL1'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/MDL1_vocals.flac
+          - button_label: 'STL1'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/STL1_vocals.flac
+          - button_label: 'JY3'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/JY3_vocals.flac
+          - button_label: '<b style=color:red>UHL3</b>'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/UHL3_vocals.flac
+          - button_label: 'TAK2'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/TAK2_vocals.flac
+          - button_label: 'TAU1'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/TAU1_vocals.flac
+          - button_label: 'Reference vocals'
+            url: sounds/James Elder_Mark M Thompson - The English Actor/ref_vocals.flac
+
+    - name: 'Tom McKenzie - Directions'
+      sounds:
+          - button_label: 'MDL1'
+            url: sounds/Tom McKenzie - Directions/MDL1_vocals.flac
+          - button_label: 'STL1'
+            url: sounds/Tom McKenzie - Directions/STL1_vocals.flac
+          - button_label: 'JY3'
+            url: sounds/Tom McKenzie - Directions/JY3_vocals.flac
+          - button_label: 'UHL3'
+            url: sounds/Tom McKenzie - Directions/UHL3_vocals.flac
+          - button_label: '<b style=color:red>TAK2</b>'
+            url: sounds/Tom McKenzie - Directions/TAK2_vocals.flac
+          - button_label: 'TAU1'
+            url: sounds/Tom McKenzie - Directions/TAU1_vocals.flac
+          - button_label: 'Reference vocals'
+            url: sounds/Tom McKenzie - Directions/ref_vocals.flac
+
+    - name: 'Hollow Ground - Ill Fate'
+      sounds:
+          - button_label: 'MDL1'
+            url: sounds/Hollow Ground - Ill Fate/MDL1_vocals.flac
+          - button_label: 'STL1'
+            url: sounds/Hollow Ground - Ill Fate/STL1_vocals.flac
+          - button_label: 'JY3'
+            url: sounds/Hollow Ground - Ill Fate/JY3_vocals.flac
+          - button_label: 'UHL3'
+            url: sounds/Hollow Ground - Ill Fate/UHL3_vocals.flac
+          - button_label: '<b style=color:red>TAK2</b>'
+            url: sounds/Hollow Ground - Ill Fate/TAK2_vocals.flac
+          - button_label: '<b style=color:red>TAU1</b>'
+            url: sounds/Hollow Ground - Ill Fate/TAU1_vocals.flac
+          - button_label: 'Reference vocals'
+            url: sounds/Hollow Ground - Ill Fate/ref_vocals.flac
+
+    - name: 'Georgia Wonder - Siren'
+      sounds:
+          - button_label: 'MDL1'
+            url: sounds/Georgia Wonder - Siren/MDL1_vocals.flac
+          - button_label: 'STL1'
+            url: sounds/Georgia Wonder - Siren/STL1_vocals.flac
+          - button_label: 'JY3'
+            url: sounds/Georgia Wonder - Siren/JY3_vocals.flac
+          - button_label: 'UHL3'
+            url: sounds/Georgia Wonder - Siren/UHL3_vocals.flac
+          - button_label: 'TAK2'
+            url: sounds/Georgia Wonder - Siren/TAK2_vocals.flac
+          - button_label: '<b style=color:red>TAU1</b>'
+            url: sounds/Georgia Wonder - Siren/TAU1_vocals.flac
+          - button_label: 'Reference vocals'
+            url: sounds/Georgia Wonder - Siren/ref_vocals.flac

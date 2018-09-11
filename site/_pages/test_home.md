@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /
+permalink: /test_home/
 title: Welcome
 next_url: /pickthebest/
 ---
