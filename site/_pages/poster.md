@@ -52,11 +52,12 @@ SUBJECTIVE SELECTION OF THE BEST ALGORITHM
 -  The MUS(ic) separation task compares algorithms aimed at
   recovering instrument stems from a stereo mix
 
-- Separating the *singing-voice* from music is difficult, but
-  deep-learning methods show significant improvements over traditional
+- This work focuses on _singing-voice separation_
+
+- Deep-learning methods show significant improvements over traditional
   techniques such as NMF and ICA
 
-- Source separation introduces distortions and artifacts, which degrades the
+- Source separation introduces distortions and artifacts, which degrade the
   perceived sound quality
 
 <div class='refs' markdown="1">
@@ -67,13 +68,13 @@ SUBJECTIVE SELECTION OF THE BEST ALGORITHM
 
 <div class='panel' id='intro2' markdown="1">
 
-# How to evaluate separation performance?
+# How To Evaluate Separation Performance?
 
 Few researchers conduct listening assessments, but instead rely on objective
 toolkits to quantify separation performance:
 
-- <span style='color: #1b656d'>BSS Eval</span><sup>2</sup>: Blind Source Separation Evaluation
-- <span style='color: #1b656d'>PEASS</span><sup>3</sup>: Perceptual Evaluation methods for Audio Source Separation
+- <span style='color: #1b656d'>BSS Eval</span> <sup>2</sup>: Blind Source Separation Evaluation
+- <span style='color: #1b656d'>PEASS</span> <sup>3</sup>: Perceptual Evaluation methods for Audio Source Separation
 
 Both approaches based on distortion decomposition between estimated source
 $$\hat{S}$$ and target source $$S$$:
@@ -132,7 +133,7 @@ true sources:
 
 <div markdown="1">
 ![]({{ site.url }}/images/algo_boxplots.png)
-*Boxplots showing the number of times each algorithm was selected for a given
+*Strip and box plots showing the number of times each algorithm was selected for a given
 song, normalised by the total number of listeners*
 </div>
 
@@ -151,9 +152,9 @@ separated by song*
 # Conclusions
 
 - <span style='color: #1b656d'>**TAU1**</span> performed best, followed by <span style='color: #1b656d'>**TAK2**</span>
-- Listeners' selection of the best algorithm depended on song (see paper)
-- SDR of the BSS Eval toolkit showed the strongest predictive ability
-- More controlled assessments, involving trained listeners, targeting the *magnitude* of overall separation quality are needed
-- Further experiments needed to assess objective metrics of overall quality
+- Listeners' selection of the best algorithm depended on song (see <span style='color: #1b656d'>**JY3**</span> above)
+- SDR of the BSS Eval toolkit gave the highest correlations (higher SDR = more votes)
+- More controlled assessments, involving trained listeners, using scaling procedures to quantify overall separation quality are needed
+- Further work needed to assess/refine objective metrics of overall separation quality
 
 </div>
